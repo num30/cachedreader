@@ -1,7 +1,6 @@
 # Cached Reader
-Chached Reader is an implimination of a reader that could be re-read from the biggining. 
-
-One of the scenarios is when you need to verify file or request data by examining content in the beginning. 
+Cached Reader is an implementation of a reader that could be re-read from the beginning.
+One of the scenarios is when you need to verify the file header or request data by examining content at the beginning of the stream.
 
 ## Install 
 ``` 
