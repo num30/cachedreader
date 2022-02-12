@@ -3,7 +3,12 @@ Chached Reader is an implimination of a reader that could be re-read from the bi
 
 One of the scenarios is when you need to verify file or request data by examining content in the beginning. 
 
-## Example 1. Read file header and save it 
+## Install 
+``` 
+  go get github.com/testhub-io/cachedreader
+```
+
+## Example 1. Minimal example 
 
 ``` golang
 	var str = []byte("the quick brown fox jumps over the lazy dog")
@@ -22,3 +27,4 @@ One of the scenarios is when you need to verify file or request data by examinin
 	fmt.Println(string(b)) // print whole string
 
 ```
+

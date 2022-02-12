@@ -1,23 +1,24 @@
-package cachereader
+package cachedreader
 
 import (
 	"io"
 )
 
-type cachedReader struct {
+type CachedReader struct {
 	r          io.Reader
 	buff       []byte
 	afterReset bool
 }
 
-func NewCachedReader(r io.Reader) *cachedReader {
-	return &cachedReader{
+// NewCachedReader returns a new instance of CachedReader.
+func NewCachedReader(r io.Reader) *CachedReader {
+	return &CachedReader{
 		r:    r,
 		buff: []byte{},
 	}
 }
 
-func (s *cachedReader) Read(p []byte) (n int, err error) {
+func (s *CachedReader) Read(p []byte) (n int, err error) {
 	if s.afterReset && len(s.buff) > 0 {
 		n = copy(p, s.buff)
 		s.buff = s.buff[n:]
@@ -32,9 +33,10 @@ func (s *cachedReader) Read(p []byte) (n int, err error) {
 	return n, err
 }
 
-func (s *cachedReader) Reset() {
+// Reset resets the reader to the bigining of the stream.
+func (s *CachedReader) Reset() {
 	if s.afterReset {
-		panic("cachedReader.Reset() called twice. Only one call of Reset() is allowed")
+		panic("CachedReader.Reset() called twice. Only one call of Reset() is allowed")
 	}
 	s.afterReset = true
 }
