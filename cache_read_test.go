@@ -1,4 +1,4 @@
-package cachereader
+package cachedreader
 
 import (
 	"bytes"
